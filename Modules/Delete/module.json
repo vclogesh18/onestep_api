@@ -1,0 +1,13 @@
+{
+    "name": "Delete",
+    "alias": "delete",
+    "description": "",
+    "keywords": [],
+    "priority": 0,
+    "providers": [
+        "Modules\\Delete\\Providers\\DeleteServiceProvider"
+    ],
+    "aliases": {},
+    "files": [],
+    "requires": []
+}

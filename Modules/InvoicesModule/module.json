@@ -1,0 +1,13 @@
+{
+    "name": "InvoicesModule",
+    "alias": "invoicesmodule",
+    "description": "",
+    "keywords": [],
+    "priority": 0,
+    "providers": [
+        "Modules\\InvoicesModule\\Providers\\InvoicesModuleServiceProvider"
+    ],
+    "aliases": {},
+    "files": [],
+    "requires": []
+}
