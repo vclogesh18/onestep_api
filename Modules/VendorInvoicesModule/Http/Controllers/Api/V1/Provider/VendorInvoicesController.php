@@ -709,11 +709,8 @@ class VendorInvoicesController extends Controller {
             });
     }
     
-    public function uploadImages(Request $request, $id)
-    {
-        
+    public function uploadImages(Request $request, $id) {
 
-        $uploadedPaths = [];
         $images = $request->file('images');
 
         if (!$images) {
@@ -722,26 +719,28 @@ class VendorInvoicesController extends Controller {
 
 
         $images = is_array($images) ? $images : [$images];
+        $urls = [];
 
+        // Split description by comma
+        $descriptions = explode(',', $request->description);
 
-
-       // echo "images validated";
-       // print_r($request->file('images'));
-
-       foreach ($images as $image) {
+            
+        foreach ($images as $index => $image) {
             if ($image->isValid()) {
                 $path = $image->store("uploads/vendor_invoices/{$id}", 'public');
+                
                 VendorInvoiceImage::create([
                     'vendor_invoice_id' => $id,
                     'path' => $path,
-                    'description' => $request->description, // store description
+                    'description' => $descriptions[$index] ?? null, // match description by index
                 ]);
+                
                 $urls[] = asset("public/storage/{$path}");
             }
         }
 
         return response()->json([
-            'message' => 'Images uploaded successfully',
+            'message' => 'Images uploaded successfully white',
             'urls' => $urls
         ]);
     }
