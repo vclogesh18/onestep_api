@@ -740,7 +740,7 @@ class VendorInvoicesController extends Controller {
         }
 
         return response()->json([
-            'message' => 'Images uploaded successfully white',
+            'message' => 'Images uploaded successfully',
             'urls' => $urls
         ]);
     }
