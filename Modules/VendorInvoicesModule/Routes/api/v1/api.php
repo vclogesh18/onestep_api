@@ -1,6 +1,8 @@
 <?php 
 
 use Illuminate\Support\Facades\Route;
+use Modules\VendorInvoicesModule\Http\Controllers\Api\V1\Provider\VendorInvoiceImageController;
+
 
 
 Route::group(['prefix' => 'provider', 'as' => 'provider.', 'namespace' => 'Api\V1\Provider', 'middleware' => ['auth:api']], function () {
@@ -21,5 +23,13 @@ Route::group(['prefix' => 'provider', 'as' => 'provider.', 'namespace' => 'Api\V
         Route::post('/invoice/expense-reporting', 'VendorInvoicesController@expenseReporting');
         Route::post('/invoice/calender', 'VendorInvoicesController@calender');
         Route::post('/upload-images/{id}', 'VendorInvoicesController@uploadImages');
+
+        // update vendor invoice image
+        Route::post('/update-image/{invoiceId}', [VendorInvoiceImageController::class, 'updateImage']);
+
+        // delete vendor invoice image
+        Route::delete('/delete-image/{invoiceId}', [VendorInvoiceImageController::class, 'deleteImage']);
+
     }); 
-}); 
+});
+

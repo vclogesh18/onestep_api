@@ -72,6 +72,7 @@ class VendorInvoices extends Model
 
     public function images()
     {
-        return $this->hasMany(VendorInvoiceImage::class, 'vendor_invoice_id');
+        return $this->hasMany(VendorInvoiceImage::class, 'vendor_invoice_id')
+                    ->active();
     }
 }
